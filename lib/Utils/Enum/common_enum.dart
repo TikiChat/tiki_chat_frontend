@@ -36,4 +36,4 @@ enum BreakPointEnum {
 
 enum ButtonEnum { RADIUS, OUTLINE }
 
-enum InputValidateEnum { EMAIL, PHONE }
+enum InputValidateEnum { EMAIL, PHONE, NICKNAME, PWD, PWD_CONFIRM }

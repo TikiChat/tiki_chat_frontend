@@ -13,4 +13,16 @@ extension InputValidate on String {
     if (!isPhone) return "올바른 형식의 휴대폰 번호를 입력해 주세요.";
     return null;
   }
+
+  String? isPasswoard() {
+    final isPwd =
+        RegExp(r'^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$').hasMatch(this);
+    if (!isPwd) return "영문·숫자·특수문자(!@#\$%^&*)를 포함하여 8자리 이상으로 구성해 주세요.";
+    return null;
+  }
+
+  String? isPasswoardConfirm({required String compare}) {
+    if (this != compare) return "비밀번호가 일치하지 않습니다.";
+    return null;
+  }
 }
