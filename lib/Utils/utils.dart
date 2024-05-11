@@ -43,3 +43,22 @@ double getSizeByScreen(
     return mobile;
   }
 }
+
+String changeQueryToString(Map<String, dynamic> query) {
+  return query.entries.where((e) => e.value != null).map((e) => '${e.key}=${e.value}').join('&');
+}
+
+Uri getUrl(
+  String server, [
+  String? path,
+  Map<String, dynamic>? query,
+]) {
+  List<String> url = [server];
+
+  if (path != null) url.add(path);
+  if (query != null) {
+    url.add('?');
+    url.add(changeQueryToString(query));
+  }
+  return Uri.parse(url.join(''));
+}
