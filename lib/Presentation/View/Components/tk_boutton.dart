@@ -83,7 +83,7 @@ class TkButton extends StatelessWidget {
       ),
       child: TkText(
         text: text,
-        style: context.textStyle.h2,
+        style: context.textStyle.h15,
         color: textColor ?? context.colors.white,
       ),
     );
@@ -105,7 +105,7 @@ class TkButton extends StatelessWidget {
       ),
       child: TkText(
         text: text,
-        style: context.textStyle.h2,
+        style: context.textStyle.h15,
         color: textColor ?? context.colors.white,
       ),
     );
