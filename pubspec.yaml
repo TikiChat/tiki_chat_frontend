@@ -49,6 +49,9 @@ dependencies:
   json_annotation: ^4.9.0
   envied: ^0.5.4+1
 
+  #Splash
+  flutter_native_splash: ^2.4.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
