@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:tikichat_app/Utils/Enum/api_enum.dart';
 import 'package:tikichat_app/Utils/Env/env.dart';
+import 'package:tikichat_app/Utils/Exception/tk_exception.dart';
+import 'package:tikichat_app/Utils/tk_logger.dart';
 import 'package:tikichat_app/Utils/utils.dart';
 
 typedef JsonConverter<T> = T Function(Object? json);
@@ -21,12 +23,18 @@ class RemoteSource {
     try {
       final res = await callApiByType(type, path, data, query, options);
       final json = res.data;
+      const TkLogger().data(data: json);
 
       if (converter != null && json != null) {
-        return converter(json);
+        return converter(json["data"]);
       } else {
         return json as T;
       }
+    } on DioException catch (e) {
+      if (e.response != null) {
+        throw TkException(e.response!.statusCode!, e.response!.data['message']);
+      }
+      throw Exception(e.response);
     } catch (e) {
       throw Exception();
     }
@@ -55,7 +63,6 @@ class RemoteSource {
 
   Future<Response> get({required String path, required Map<String, dynamic>? query}) async {
     final url = getUrl(Env.serverPath, path, query).toString();
-
     Response response = await dio.get(url);
     return response;
   }
@@ -63,7 +70,8 @@ class RemoteSource {
   Future<Response> post(
       {required String path, Map<String, dynamic>? data, Map<String, dynamic>? query}) async {
     final url = getUrl(Env.serverPath, path, query).toString();
-    Response response = await dio.post(url, data: jsonEncode(data));
+    Response response = await dio.post(url,
+        data: jsonEncode(data), options: Options(headers: {'Device-ID': 'iphone'}));
     return response;
   }
 

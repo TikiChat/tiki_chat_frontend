@@ -14,4 +14,6 @@ class CuColor {
   Color lightGrey = const Color(0xFFE8ECF4);
   Color lightDarkFont = const Color(0xFF545454);
   Color error = const Color(0xFFF83D3D);
+  Color lightGrey10 = const Color(0xFF636363);
+  Color lightGrey90 = const Color(0xFF959595);
 }

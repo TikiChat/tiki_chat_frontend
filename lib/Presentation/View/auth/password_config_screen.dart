@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
+import 'package:tikichat_app/DI/locator.dart';
 import 'package:tikichat_app/Presentation/View/Auth/Widgets/title_layout_widget.dart';
 import 'package:tikichat_app/Presentation/View/Components/tk_boutton.dart';
 import 'package:tikichat_app/Presentation/View/Components/tk_input.dart';
 import 'package:tikichat_app/Presentation/View/Components/tk_layout.dart';
 import 'package:tikichat_app/Presentation/View/Components/tk_text.dart';
+import 'package:tikichat_app/Presentation/ViewModel/Auth/auth_view_model.dart';
 import 'package:tikichat_app/Utils/Enum/common_enum.dart';
 import 'package:tikichat_app/Utils/Enum/router_enum.dart';
 import 'package:tikichat_app/Utils/Extension/size_extension.dart';
@@ -14,7 +16,9 @@ import 'package:tikichat_app/Utils/Theme/index.dart';
 import 'package:tikichat_app/Utils/constants.dart';
 
 class PasswordConfigScreen extends StatefulWidget {
-  const PasswordConfigScreen({super.key});
+  const PasswordConfigScreen({super.key, required this.email});
+
+  final String email;
 
   @override
   State<PasswordConfigScreen> createState() => _PasswordConfigScreenState();
@@ -103,7 +107,21 @@ class _PasswordConfigScreenState extends State<PasswordConfigScreen> {
                   isLong: true,
                   onPressed: formKey.currentState?.validate() != true
                       ? null
-                      : () => context.push(RouterPathEnum.NICKNAME.path),
+                      : () async {
+                          AuthViewModel authViewModel = locator<AuthViewModel>();
+                          if (widget.email != 'false') {
+                            // final data = {
+                            //   "tempToken": "???",
+                            //   "email": widget.email,
+                            //   "newPassword": pwdConfirmCtrl.text,
+                            // };
+                            // await authViewModel.updatePasssword(data, userId);
+                          }
+
+                          authViewModel.userData =
+                              authViewModel.userData.copyWith(password: pwdCtrl.text);
+                          context.push(RouterPathEnum.NICKNAME.path);
+                        },
                 ),
                 Gap(40.px),
               ],
