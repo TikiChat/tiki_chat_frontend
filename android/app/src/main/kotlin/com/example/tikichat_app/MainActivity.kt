@@ -1,4 +1,4 @@
-package com.example.tikichat_app
+package com.tiki.tikichatApp
 
 import io.flutter.embedding.android.FlutterActivity
 
