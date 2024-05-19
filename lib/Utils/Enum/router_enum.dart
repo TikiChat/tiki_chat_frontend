@@ -7,10 +7,12 @@ enum RouterPathEnum {
   AGREE("/agree"),
   NICKNAME("/nickname"),
   CONFIRM("/confirm"),
-  EMAIL_AUTH("/emailAuth/:email"),
+  EMAIL_AUTH("/emailAuth"),
   PWD_CONFIG("/pwdConfig"),
   NO_ACCOUNT("/noAccount"),
   NO_PASSWORD("/noPassword"),
+  PASSWORD("/password"),
+  HOME("/home"),
   SIGNOUT("/signout");
 
   const RouterPathEnum(this.path);

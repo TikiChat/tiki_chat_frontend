@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:tikichat_app/Utils/Theme/index.dart';
 
 class OtpButtonWidget extends StatefulWidget {
-  const OtpButtonWidget({super.key, required this.controller});
+  const OtpButtonWidget({super.key, required this.controller, this.focus, this.nextFocus});
   final TextEditingController controller;
+  final FocusNode? focus;
+  final FocusNode? nextFocus;
 
   @override
   State<OtpButtonWidget> createState() => _OtpButtonWidgetState();
@@ -32,11 +34,12 @@ class _OtpButtonWidgetState extends State<OtpButtonWidget> {
   Widget build(BuildContext context) {
     return Expanded(
       child: AspectRatio(
-        aspectRatio: 7 / 6,
+        aspectRatio: 1,
         child: TextFormField(
+          focusNode: widget.focus,
           controller: widget.controller,
           maxLength: 1,
-          style: context.textStyle.h20Bold,
+          style: context.textStyle.h20Bold.copyWith(height: 1.2),
           textAlign: TextAlign.center,
           decoration: InputDecoration(
             counterText: "",
@@ -52,6 +55,11 @@ class _OtpButtonWidgetState extends State<OtpButtonWidget> {
               ),
             ),
           ),
+          onChanged: (value) {
+            if (widget.nextFocus != null) {
+              FocusScope.of(context).requestFocus(widget.nextFocus);
+            }
+          },
         ),
       ),
     );

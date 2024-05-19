@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:size_setter/size_setter.dart';
+import 'package:tikichat_app/DI/locator.dart';
 import 'package:tikichat_app/Utils/constants.dart';
 import 'package:tikichat_app/Utils/router.dart';
 
@@ -12,6 +13,8 @@ void main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+
+  await initLocator();
 
   runApp(const MyApp());
 }

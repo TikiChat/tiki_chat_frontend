@@ -14,7 +14,7 @@ class TkInput extends StatefulWidget {
     this.suffixIcon,
     this.ishide,
     this.compare,
-    this.controller,
+    required this.controller,
   });
   final InputValidateEnum? validator;
   final String? hintText;
@@ -23,7 +23,7 @@ class TkInput extends StatefulWidget {
   final Widget? suffixIcon;
   final bool? ishide;
   final TextEditingController? compare;
-  final TextEditingController? controller;
+  final TextEditingController controller;
 
   @override
   State<TkInput> createState() => _TkInputState();
@@ -31,18 +31,16 @@ class TkInput extends StatefulWidget {
 
 class _TkInputState extends State<TkInput> {
   var textLength = 0;
-  late TextEditingController controller;
 
   @override
   void initState() {
     super.initState();
-    controller = TextEditingController();
   }
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: widget.controller ?? controller,
+      controller: widget.controller,
       style: context.textStyle.h15Medium,
       obscureText: widget.ishide ?? false,
       obscuringCharacter: '⦁',
