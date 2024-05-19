@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1014559418471",
+    "project_id": "tikichat-5a228",
+    "storage_bucket": "tikichat-5a228.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1014559418471:android:5d2a3c6c75154b1042ccc2",
+        "android_client_info": {
+          "package_name": "com.tiki.tikichatApp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvx4jqu9c8U7XPr4LD8tGQNaXe1KD4ku0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

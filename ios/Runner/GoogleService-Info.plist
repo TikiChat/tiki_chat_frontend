@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyBPQf5LdB088sRx5oPBr1wuxJFFygVfM7o</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1014559418471</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.tiki.tikichatApp</string>
+	<key>PROJECT_ID</key>
+	<string>tikichat-5a228</string>
+	<key>STORAGE_BUCKET</key>
+	<string>tikichat-5a228.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1014559418471:ios:786e2819081feb6b42ccc2</string>
+</dict>
+</plist>
