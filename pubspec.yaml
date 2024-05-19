@@ -64,6 +64,9 @@ dependencies:
   device_info_plus: ^10.1.0
   get_ip_address: ^0.0.6
 
+  #Splash
+  flutter_native_splash: ^2.4.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
