@@ -7,7 +7,7 @@ part 'latest_terms_response.freezed.dart';
 @freezed
 class LatestTermsResponse with _$LatestTermsResponse {
   const factory LatestTermsResponse({
-    List<LatestTermsDto> termsDtos,
+    List<LatestTermsDto>? termsDtos,
   }) = _LatestTermsResponse;
 
   factory LatestTermsResponse.fromJson(Map<String, dynamic> json) =>
