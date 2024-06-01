@@ -43,6 +43,7 @@ dependencies:
   gap: ^3.0.1
   flutter_svg: ^2.0.10+1
   fluttertoast: ^8.2.5
+  keyboard_dismisser: ^3.0.0
 
   #state
   flutter_bloc: ^8.1.5
@@ -66,6 +67,8 @@ dependencies:
 
   #Splash
   flutter_native_splash: ^2.4.0
+
+  #firebase
   firebase_core: ^2.31.0
   firebase_crashlytics: ^3.5.5
   firebase_analytics: ^10.10.5

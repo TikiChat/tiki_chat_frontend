@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 import 'package:tikichat_app/Utils/Extension/size_extension.dart';
 import 'package:tikichat_app/Utils/Theme/index.dart';
 
@@ -12,11 +13,13 @@ class TkLayout extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       backgroundColor: context.colors.background,
-      body: SafeArea(
-          child: Padding(
-        padding: padding ?? EdgeInsets.symmetric(horizontal: 25.px),
-        child: child,
-      )),
+      body: KeyboardDismisser(
+        child: SafeArea(
+            child: Padding(
+          padding: padding ?? EdgeInsets.symmetric(horizontal: 25.px),
+          child: child,
+        )),
+      ),
     );
   }
 }

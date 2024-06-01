@@ -16,7 +16,8 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+  FirebaseAnalytics.instance.setAnalyticsCollectionEnabled(true);
+
   await FirebaseCrashlytics.instance.recordError(Exception(), null, fatal: true);
   FlutterError.onError = (errorDetails) {
     FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
