@@ -1,3 +1,4 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tikichat_app/Presentation/View/Auth/agree_screen.dart';
 import 'package:tikichat_app/Presentation/View/Auth/confirm_screen.dart';
@@ -13,6 +14,7 @@ import 'package:tikichat_app/Utils/Enum/router_enum.dart';
 
 // GoRouter configuration
 final router = GoRouter(
+  observers: [FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance)],
   initialLocation: RouterPathEnum.SIGNIN.path,
   routes: [
     GoRoute(
