@@ -75,6 +75,7 @@ dependencies:
 
   #social login
   kakao_flutter_sdk_user: ^1.9.2
+  flutter_naver_login: ^1.8.0
 
 dev_dependencies:
   flutter_test:

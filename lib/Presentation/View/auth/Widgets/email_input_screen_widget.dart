@@ -123,6 +123,7 @@ class _EmailInputScreenWidgetState extends State<EmailInputScreenWidget> {
                   text: SocialEnum.NAVER.text,
                   padding: EdgeInsets.all(22.px),
                   textColor: context.colors.black,
+                  onPressed: authViewModel.loginNaver,
                 ),
               ),
               Gap(7.h),

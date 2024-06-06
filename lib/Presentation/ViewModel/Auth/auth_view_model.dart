@@ -4,8 +4,10 @@ import 'package:tikichat_app/Domain/Entitys/terms.dart';
 import 'package:tikichat_app/Domain/Entitys/user_signup_request.dart';
 import 'package:tikichat_app/Domain/UseCase/Auth/auth_usecase.dart';
 import 'package:tikichat_app/Presentation/ViewModel/Common/cubit_state.dart';
+import 'package:tikichat_app/Utils/Enum/common_enum.dart';
 import 'package:tikichat_app/Utils/utils.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_naver_login/flutter_naver_login.dart';
 
 class AuthViewModel extends Cubit<CubitState<Terms>> {
   AuthViewModel() : super(ItemsInitial());
@@ -90,6 +92,19 @@ class AuthViewModel extends Cubit<CubitState<Terms>> {
         registrationId: myInfo.kakaoAccount!.profile!.nickname!,
       );
       return success(true);
+    } catch (e) {
+      return fail(e.toString());
+    }
+  }
+
+  Future loginNaver() async {
+    try {
+      await FlutterNaverLogin.logIn();
+      NaverAccessToken res = await FlutterNaverLogin.currentAccessToken;
+      await authUseCase.loginSocial(
+        accessToken: res.accessToken,
+        registrationId: SocialEnum.NAVER.name,
+      );
     } catch (e) {
       return fail(e.toString());
     }
