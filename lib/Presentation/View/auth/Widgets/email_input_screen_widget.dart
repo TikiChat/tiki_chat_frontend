@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:tikichat_app/DI/locator.dart';
 import 'package:tikichat_app/Presentation/View/Auth/Widgets/title_layout_widget.dart';
 import 'package:tikichat_app/Presentation/View/Components/tk_boutton.dart';
 import 'package:tikichat_app/Presentation/View/Components/tk_input.dart';
 import 'package:tikichat_app/Presentation/View/Components/tk_text.dart';
+import 'package:tikichat_app/Presentation/ViewModel/Auth/auth_view_model.dart';
 import 'package:tikichat_app/Utils/Enum/common_enum.dart';
 import 'package:tikichat_app/Utils/Extension/size_extension.dart';
 import 'package:tikichat_app/Utils/Theme/index.dart';
@@ -30,6 +32,7 @@ class EmailInputScreenWidget extends StatefulWidget {
 class _EmailInputScreenWidgetState extends State<EmailInputScreenWidget> {
   late TextEditingController controller;
   late GlobalKey<FormState> formKey;
+  late AuthViewModel authViewModel;
   late Color btnColor;
 
   @override
@@ -39,6 +42,7 @@ class _EmailInputScreenWidgetState extends State<EmailInputScreenWidget> {
     controller = TextEditingController();
     formKey = GlobalKey<FormState>();
     btnColor = context.colors.primary.withOpacity(0.3);
+    authViewModel = locator<AuthViewModel>();
   }
 
   @override
@@ -109,6 +113,7 @@ class _EmailInputScreenWidgetState extends State<EmailInputScreenWidget> {
                   text: SocialEnum.KAKAO.text,
                   padding: EdgeInsets.all(22.px),
                   textColor: context.colors.black,
+                  onPressed: authViewModel.loginKakao,
                 ),
               ),
               Gap(7.h),

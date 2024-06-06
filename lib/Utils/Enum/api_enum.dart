@@ -7,6 +7,7 @@ enum ApiPathEnum {
   AGREE_TERM("/api/v1/terms/latest"),
   LOGIN("/api/v1/auth/login"),
   USER("/api/v1/users"),
+  SOCIAL_LOGIN("/api/v1/auth/social/login"),
   AUTH_VERIFY("/api/v1/auth/verify");
 
   const ApiPathEnum(this.path);

@@ -1,3 +1,4 @@
+import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 import 'package:tikichat_app/DI/locator.dart';
 import 'package:tikichat_app/Domain/Entitys/terms.dart';
 import 'package:tikichat_app/Domain/Entitys/user_signup_request.dart';
@@ -74,6 +75,20 @@ class AuthViewModel extends Cubit<CubitState<Terms>> {
   Future updatePasssword(Map<String, String> data, int userId) async {
     try {
       await authUseCase.updatePasssword(data, userId);
+      return success(true);
+    } catch (e) {
+      return fail(e.toString());
+    }
+  }
+
+  Future loginKakao() async {
+    try {
+      final token = await UserApi.instance.loginWithKakaoTalk();
+      final myInfo = await UserApi.instance.me();
+      await authUseCase.loginKakao(
+        accessToken: token.accessToken,
+        registrationId: myInfo.kakaoAccount!.profile!.nickname!,
+      );
       return success(true);
     } catch (e) {
       return fail(e.toString());

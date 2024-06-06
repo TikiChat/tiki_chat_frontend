@@ -4,6 +4,7 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 import 'package:size_setter/size_setter.dart';
 import 'package:tikichat_app/DI/locator.dart';
 import 'package:tikichat_app/Utils/constants.dart';
@@ -35,7 +36,7 @@ void main() async {
   ]);
 
   await initLocator();
-
+  KakaoSdk.init(nativeAppKey: 'f010e2cf91863a1122f3ef2526ba2716');
   runApp(const MyApp());
 }
 
