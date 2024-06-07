@@ -193,6 +193,15 @@ class CuTextStyles {
   );
 
   /// @description
+  /// - fontSize: 12.sp
+  /// - fontWeight: regular(400)
+  ///
+  TextStyle h12Regular = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeightEnum.REGULAR.fontWeight,
+  );
+
+  /// @description
   /// - fontSize: 11.sp
   /// - fontWeight: bold(700)
   ///
