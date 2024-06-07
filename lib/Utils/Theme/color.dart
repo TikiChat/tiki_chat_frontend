@@ -16,8 +16,4 @@ class CuColor {
   Color error = const Color(0xFFF83D3D);
   Color lightGrey10 = const Color(0xFF636363);
   Color lightGrey90 = const Color(0xFF959595);
-  Color unSelectedButton = const Color(0xFF9A9A9A);
-  Color selectedButton = const Color(0xFFFF5290);
-  Color tagBackground = const Color(0xFFF4F4F4);
-  Color tagText = const Color(0xFF686868);
 }
