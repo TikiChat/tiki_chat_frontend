@@ -133,6 +133,7 @@ class _EmailInputScreenWidgetState extends State<EmailInputScreenWidget> {
                   text: SocialEnum.GOOGLE.text,
                   padding: EdgeInsets.all(22.px),
                   textColor: context.colors.black,
+                  onPressed: authViewModel.loginGoogle,
                 ),
               ),
             ],

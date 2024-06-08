@@ -1,3 +1,4 @@
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 import 'package:tikichat_app/DI/locator.dart';
 import 'package:tikichat_app/Domain/Entitys/terms.dart';
@@ -104,6 +105,19 @@ class AuthViewModel extends Cubit<CubitState<Terms>> {
       await authUseCase.loginSocial(
         accessToken: res.accessToken,
         registrationId: SocialEnum.NAVER.name,
+      );
+    } catch (e) {
+      return fail(e.toString());
+    }
+  }
+
+  Future loginGoogle() async {
+    try {
+      final res = await GoogleSignIn().signIn();
+      final auth = await res!.authentication;
+      await authUseCase.loginSocial(
+        accessToken: auth.accessToken!,
+        registrationId: SocialEnum.GOOGLE.name,
       );
     } catch (e) {
       return fail(e.toString());

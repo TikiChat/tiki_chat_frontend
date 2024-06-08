@@ -25,5 +25,12 @@
       }
     }
   ],
-  "configuration_version": "1"
+  "configuration_version": "1",
+  "installed": {
+    "client_id": "1014559418471-905664995hh7thujdevf794mten88k9g.apps.googleusercontent.com",
+    "project_id": "tikichat-5a228",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs"
+  }
 }
