@@ -77,4 +77,14 @@ class AuthRepositoryImpl extends AuthRepository {
       converter: null,
     );
   }
+
+  @override
+  Future loginSocial({required String accessToken, required String registrationId}) async {
+    return await remoteSource.request(
+      type: ApiTypeEnum.POST,
+      path: "${ApiPathEnum.SOCIAL_LOGIN.path}/$registrationId",
+      data: {"oauth2AccessToken": accessToken},
+      converter: null,
+    );
+  }
 }

@@ -32,6 +32,11 @@ class RemoteSource {
       }
     } on DioException catch (e) {
       if (e.response != null) {
+        const TkLogger().error(data: {
+          "path": e.requestOptions.path,
+          "uri": e.requestOptions.uri,
+          "data": e.requestOptions.data
+        });
         throw TkException(e.response!.statusCode!, e.response!.data['message']);
       }
       throw Exception(e.response);

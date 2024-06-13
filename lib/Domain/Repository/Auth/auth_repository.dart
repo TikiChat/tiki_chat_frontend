@@ -10,4 +10,5 @@ abstract class AuthRepository {
   Future<LatestTermsResponse> getAgreeTerms();
   Future signinNormal(Map<String, String> data);
   Future updatePasssword(Map<String, String> data, int userId);
+  Future loginSocial({required String accessToken, required String registrationId});
 }

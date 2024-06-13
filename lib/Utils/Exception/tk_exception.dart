@@ -9,6 +9,7 @@ class TkException implements Exception {
   String toString() {
     final result = ErrorStatusEnum.values.firstWhere((element) => element.status == status,
         orElse: () => ErrorStatusEnum.UNKNOWN_ERROR);
+    if (result.message == message) return message;
     return "${result.message}\n$message";
   }
 }

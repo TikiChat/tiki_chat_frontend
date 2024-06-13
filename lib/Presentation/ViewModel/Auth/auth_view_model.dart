@@ -1,10 +1,14 @@
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 import 'package:tikichat_app/DI/locator.dart';
 import 'package:tikichat_app/Domain/Entitys/terms.dart';
 import 'package:tikichat_app/Domain/Entitys/user_signup_request.dart';
 import 'package:tikichat_app/Domain/UseCase/Auth/auth_usecase.dart';
 import 'package:tikichat_app/Presentation/ViewModel/Common/cubit_state.dart';
+import 'package:tikichat_app/Utils/Enum/common_enum.dart';
 import 'package:tikichat_app/Utils/utils.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_naver_login/flutter_naver_login.dart';
 
 class AuthViewModel extends Cubit<CubitState<Terms>> {
   AuthViewModel() : super(ItemsInitial());
@@ -75,6 +79,46 @@ class AuthViewModel extends Cubit<CubitState<Terms>> {
     try {
       await authUseCase.updatePasssword(data, userId);
       return success(true);
+    } catch (e) {
+      return fail(e.toString());
+    }
+  }
+
+  Future loginKakao() async {
+    try {
+      final token = await UserApi.instance.loginWithKakaoTalk();
+      final myInfo = await UserApi.instance.me();
+      await authUseCase.loginKakao(
+        accessToken: token.accessToken,
+        registrationId: myInfo.kakaoAccount!.profile!.nickname!,
+      );
+      return success(true);
+    } catch (e) {
+      return fail(e.toString());
+    }
+  }
+
+  Future loginNaver() async {
+    try {
+      await FlutterNaverLogin.logIn();
+      NaverAccessToken res = await FlutterNaverLogin.currentAccessToken;
+      await authUseCase.loginSocial(
+        accessToken: res.accessToken,
+        registrationId: SocialEnum.NAVER.name,
+      );
+    } catch (e) {
+      return fail(e.toString());
+    }
+  }
+
+  Future loginGoogle() async {
+    try {
+      final res = await GoogleSignIn().signIn();
+      final auth = await res!.authentication;
+      await authUseCase.loginSocial(
+        accessToken: auth.accessToken!,
+        registrationId: SocialEnum.GOOGLE.name,
+      );
     } catch (e) {
       return fail(e.toString());
     }
