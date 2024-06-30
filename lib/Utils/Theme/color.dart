@@ -20,4 +20,5 @@ class CuColor {
   Color selectedButton = const Color(0xFFFF5290);
   Color tagBackground = const Color(0xFFF4F4F4);
   Color tagText = const Color(0xFF686868);
+  Color subTitleText = const Color(0XFF797C7B);
 }
